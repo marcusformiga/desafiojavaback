@@ -30,6 +30,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // 🔓 Rotas públicas (sem autenticação)
                         .requestMatchers(HttpMethod.POST,"api/auth/login", "api/auth/registrar").permitAll()
+                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**").permitAll()
                         // 🔒 Todas as outras precisam de autenticação
                         .anyRequest().authenticated()
                 )

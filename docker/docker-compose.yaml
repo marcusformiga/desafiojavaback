@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+
+  # 1. Serviço do Banco de Dados PostgreSQL
+  postgres:
+    image: postgres:14-alpine  # Versão estável e leve do PostgreSQL
+    container_name: pocpjex_db
+    restart: always
+    environment:
+      # Variáveis de ambiente que configuram o PostgreSQL,
+      # baseadas nas suas configurações do application.properties
+      POSTGRES_DB: pospjex
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+    volumes:
+      # O volume 'pgdata' persistirá os dados do seu banco
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      # Opcional: expõe a porta 5432 para que você possa acessar o banco localmente se necessário
+      - "5432:5432"
+
+  # 3. Cliente Web para o Banco de Dados (pgAdmin 4)
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pocpjex_pgadmin
+    restart: always
+    environment:
+      # Credenciais para logar no pgAdmin (não são as credenciais do banco)
+      PGADMIN_DEFAULT_EMAIL: user@example.com
+      PGADMIN_DEFAULT_PASSWORD: adminpassword
+    ports:
+      # Acesso ao pgAdmin em http://localhost:5050
+      - "5050:80"
+    volumes:
+      # Volume para persistir as configurações de conexão do pgAdmin
+      - pgadmin_data:/var/lib/pgadmin
+    depends_on:
+      - postgres
+
+# Definição dos Volumes
+volumes:
+  # Volume para persistir os dados do PostgreSQL
+  pgdata:
+    driver: local
+  # Volume para persistir as configurações do pgAdmin
+  pgadmin_data:
+    driver: local

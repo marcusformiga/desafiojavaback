@@ -4,6 +4,7 @@ package com.br.formigadev.pocjava.controller.pagamento;
 import com.br.formigadev.pocjava.controller.dto.NovoPagamentoRequest;
 import com.br.formigadev.pocjava.controller.dto.NovoPagamentoResponse;
 import com.br.formigadev.pocjava.usecases.FazerPagamentoUseCase;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/pagamentos")
+@SecurityRequirement(name = "bearerAuth")
 public class NovoPagamentoController {
 
     private final FazerPagamentoUseCase pagamentoUseCase;

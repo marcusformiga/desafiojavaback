@@ -1,4 +1,6 @@
 package com.br.formigadev.pocjava.controller.dto;
 
-public record LoginResponse(String accessToken, Long expirationTime) {
+import io.swagger.v3.oas.annotations.media.Schema;
+
+public record LoginResponse(@Schema(description = "Token de acesso a rotas bloqueadas", example = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLXNlcnZlciIsInN1YiI6Imtpa28gZm9ybWlnYSIsImlhdCI6MTc2MTE1ODc3MywiZXhwIjoxNzYxMTc2NzczLCJqdGkiOiIyOTY1ZTU2Ny0zNDE2LTQ1ZDQtODgwYy0zM2U3NGZlZjg1N2MiLCJ1c2VySWQiOiIxMDIzNTk0Yi1mZmI1LTQ5ZjMtYWRhYy1kYmEwYmRmMjhiZjgifQ.kiotGrYqb8sY3zVO7X80UymGpqKZR0r71227yuThD9h26cwvTN8lmLjCZ8c5ZpJvj-MugyH-3V8UhzSmXiysPOKmtC-Q-5v0tDEWKYQ00pMlqGRhG8GlFU6tpTIwcSW_VK3h26HAZJnBiYFKfE_FLt9KG6ge0LMvx6BOPSuGE4xpPki4s2ec-JTNQ5G5iwdE9zALmUYa52zH20XnF5jwBn-I1pEir07oTDjalFafiCgcVCRlF68i3zR360S5-uR85Lr13fYuVQNWeJRc8hnbHHdB7Fbnxi0ybaG7Kafy8MnjISWav3N2DgzPecGRliSys_F90rzlf1gnPfMJRhKZkA", type = "string") String accessToken, @Schema(description = "Tempo que falta para o token expirar em milisegundos") Long expirationTime) {
 }
