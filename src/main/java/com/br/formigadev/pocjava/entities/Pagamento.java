@@ -1,6 +1,7 @@
 package com.br.formigadev.pocjava.entities;
 
 import jakarta.persistence.*;
+import org.springframework.util.Assert;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -33,6 +34,7 @@ public class Pagamento {
 
     public Pagamento(Cobranca cobranca, TipoPagamento tipoPagamento, User pagador, BigDecimal valorPago, LocalDate diaPagamento) {
         validarPagamento(cobranca, pagador);
+        Assert.isTrue(valorPago.compareTo(new BigDecimal("0.00")) > 0, "o valor pago deve ser maior que zero");
         this.cobranca = cobranca;
         this.tipo = tipoPagamento;
         this.pagador = pagador;

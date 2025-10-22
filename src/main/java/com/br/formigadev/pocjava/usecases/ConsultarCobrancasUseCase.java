@@ -13,7 +13,6 @@ import java.util.List;
 
 @Service
 public class ConsultarCobrancasUseCase {
-    // TODO: ADD paginacao
 
     private final UserRepository userRepository;
     private final CobrancaRepository cobrancaRepository;

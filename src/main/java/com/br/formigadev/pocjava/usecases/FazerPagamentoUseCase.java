@@ -3,7 +3,13 @@ package com.br.formigadev.pocjava.usecases;
 import com.br.formigadev.pocjava.client.AutorizadorClient;
 import com.br.formigadev.pocjava.controller.dto.NovoPagamentoRequest;
 import com.br.formigadev.pocjava.controller.dto.NovoPagamentoResponse;
-import com.br.formigadev.pocjava.entities.*;
+import com.br.formigadev.pocjava.entities.Cobranca;
+import com.br.formigadev.pocjava.entities.CobrancaStatus;
+import com.br.formigadev.pocjava.entities.Conta;
+import com.br.formigadev.pocjava.entities.Pagamento;
+import com.br.formigadev.pocjava.entities.StatusPagamento;
+import com.br.formigadev.pocjava.entities.TipoPagamento;
+import com.br.formigadev.pocjava.entities.User;
 import com.br.formigadev.pocjava.repository.CobrancaRepository;
 import com.br.formigadev.pocjava.repository.ContaRepository;
 import com.br.formigadev.pocjava.repository.PagamentoRepository;
@@ -33,7 +39,6 @@ public class FazerPagamentoUseCase {
 
     @Transactional
     public NovoPagamentoResponse processarPagamento(NovoPagamentoRequest request) {
-        // 1️⃣ Buscar o usuário pagador e as cobranças pendentes
         User pagador = userRepository.findById(request.pagadorId())
                 .orElseThrow(() -> new IllegalArgumentException("Usuário pagador não encontrado"));
 
@@ -82,21 +87,4 @@ public class FazerPagamentoUseCase {
 
         pagamento.setStatus(StatusPagamento.APROVADO);
     }
-
-//    private void pagarPorCartao(Cobranca cobranca, Pagamento pagamento, NovoPagamentoRequest request) {
-//        try {
-//            AutorizadorResponse response = client.autorizar(request.cartaoData());
-//
-//            BigDecimal valorCobranca = cobranca.getValor();
-//
-//            if (response.data().authorized()) {
-//                pagamento.setStatus(StatusPagamento.APROVADO);
-//            } else {
-//                pagamento.setStatus(StatusPagamento.NEGADO);
-//            }
-//        } catch (FeignException.FeignClientException e) {
-//            pagamento.setStatus(StatusPagamento.FALHA);
-//            throw new RuntimeException("Erro ao autorizar pagamento via cartão: " + e.getMessage(), e);
-//        }
-//    }
 }

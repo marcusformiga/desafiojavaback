@@ -13,7 +13,6 @@ public record NovoPagamentoRequest(
         UUID pagadorId,
         Long cobrancaId,
         TipoPagamento tipoPagamento,
-        CartaoData cartaoData,
         Integer numeroParcelas,
         @Future
         @JsonFormat(pattern = "dd/MM/yyyy", shape = JsonFormat.Shape.STRING)LocalDate diaPagamento,
