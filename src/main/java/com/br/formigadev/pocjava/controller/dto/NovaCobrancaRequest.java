@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import java.math.BigDecimal;
 
-public record NewBillRequest(@CPF @NotBlank String cpfDestinatario, @NotNull @DecimalMin(value = "1.00", message = "O valor da cobranca deve ser maior que 1.00") BigDecimal valorCobranca, String descricao, @CPF @NotBlank String cpfOrigem)  {
+public record NovaCobrancaRequest(@CPF @NotBlank String cpfDestinatario, @NotNull @DecimalMin(value = "1.00", message = "O valor da cobranca deve ser maior que 1.00") BigDecimal valorCobranca, String descricao, @CPF @NotBlank String cpfOrigem)  {
 
 
     public Cobranca toEntity(){

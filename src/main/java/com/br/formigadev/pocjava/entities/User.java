@@ -2,6 +2,7 @@ package com.br.formigadev.pocjava.entities;
 
 import com.br.formigadev.pocjava.entities.vo.PlainPassword;
 import jakarta.persistence.*;
+import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -17,6 +18,7 @@ public class User implements UserDetails {
     private UUID userId;
     private String name;
     @Column(unique = true)
+    @CPF
     private String cpf;
     private String password;
     @Column(unique = true)

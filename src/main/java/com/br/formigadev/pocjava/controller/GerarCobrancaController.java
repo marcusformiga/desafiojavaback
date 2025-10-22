@@ -1,6 +1,6 @@
 package com.br.formigadev.pocjava.controller;
 
-import com.br.formigadev.pocjava.controller.dto.NewBillRequest;
+import com.br.formigadev.pocjava.controller.dto.NovaCobrancaRequest;
 import com.br.formigadev.pocjava.controller.dto.NovaCobrancaResponse;
 import com.br.formigadev.pocjava.usecases.GerarCobrancaUseCase;
 import jakarta.validation.Valid;
@@ -22,7 +22,7 @@ public class GerarCobrancaController {
 
 
     @PostMapping(value = "/cobrancas")
-    public ResponseEntity<NovaCobrancaResponse> create(@RequestBody @Valid NewBillRequest billRequest){
+    public ResponseEntity<NovaCobrancaResponse> create(@RequestBody @Valid NovaCobrancaRequest billRequest){
         NovaCobrancaResponse response = useCase.execute(billRequest);
         return ResponseEntity.ok(response);
     }

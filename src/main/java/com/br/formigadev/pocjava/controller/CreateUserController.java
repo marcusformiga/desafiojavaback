@@ -1,6 +1,7 @@
 package com.br.formigadev.pocjava.controller;
 
-import com.br.formigadev.pocjava.controller.dto.NewUserRequest;
+import com.br.formigadev.pocjava.controller.dto.NovoUsuarioRequest;
+import com.br.formigadev.pocjava.controller.dto.NovoUsuarioResponse;
 import com.br.formigadev.pocjava.usecases.CreateUserUseCase;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +21,8 @@ public class CreateUserController {
     }
 
     @PostMapping("/auth/register")
-    public ResponseEntity<NewUserOutput> register(@RequestBody @Valid NewUserRequest request) {
-        NewUserOutput newUser = createUserUseCase.execute(request);
+    public ResponseEntity<NovoUsuarioResponse> register(@RequestBody @Valid NovoUsuarioRequest request) {
+        NovoUsuarioResponse newUser = createUserUseCase.execute(request);
 
         return ResponseEntity.ok(newUser);
     }

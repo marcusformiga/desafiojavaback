@@ -10,6 +10,8 @@ public class Conta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Version
+    private Long versao;
     private String numero;
     private String agencia;
     private BigDecimal saldo;
@@ -46,6 +48,10 @@ public class Conta {
 
     public Long getId() {
         return id;
+    }
+
+    public Long getVersao() {
+        return versao;
     }
 
     public void setId(Long id) {

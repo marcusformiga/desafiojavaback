@@ -1,8 +1,7 @@
 package com.br.formigadev.pocjava.usecases;
 
-import com.br.formigadev.pocjava.controller.NewUserInput;
-import com.br.formigadev.pocjava.controller.NewUserOutput;
-import com.br.formigadev.pocjava.controller.dto.NewUserResponse;
+import com.br.formigadev.pocjava.controller.dto.NovoUsuarioResponse;
+import com.br.formigadev.pocjava.controller.dto.NovoUsuarioRequest;
 import com.br.formigadev.pocjava.entities.User;
 import com.br.formigadev.pocjava.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -18,7 +17,7 @@ public class CreateUserUseCase {
     }
 
     @Transactional
-    public NewUserOutput execute(NewUserInput userInput){
+    public NovoUsuarioResponse execute(NovoUsuarioRequest userInput){
         User user = userInput.toEntity();
         boolean emailInUse = userRepository.findByEmail(user.getEmail()).isPresent();
         boolean cpfInUse =  userRepository.findByCpf(user.getCpf()).isPresent();
@@ -29,6 +28,6 @@ public class CreateUserUseCase {
             throw new RuntimeException("Cpf duplicado");
         }
         User savedUser = userRepository.save(user);
-        return new NewUserResponse(savedUser.getUserId().toString(), savedUser.getEmail(), savedUser.getName());
+        return new NovoUsuarioResponse(savedUser.getUserId().toString(), savedUser.getEmail(), savedUser.getName());
     }
 }

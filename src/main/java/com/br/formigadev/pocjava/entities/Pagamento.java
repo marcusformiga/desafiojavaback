@@ -32,12 +32,24 @@ public class Pagamento {
     public Pagamento(){}
 
     public Pagamento(Cobranca cobranca, TipoPagamento tipoPagamento, User pagador, BigDecimal valorPago, LocalDate diaPagamento) {
+        validarPagamento(cobranca, pagador);
         this.cobranca = cobranca;
         this.tipo = tipoPagamento;
         this.pagador = pagador;
         this.valorPago = valorPago;
         this.dataPagamento = diaPagamento;
     }
+    public void validarPagamento(Cobranca cobranca, User pagador) {
+        if (this.valorPago.compareTo(cobranca.getValor()) != 0)
+            throw new IllegalArgumentException("O valor pago deve ser igual ao valor da cobrança.");
+
+        if (cobranca.getStatus().equals(CobrancaStatus.PAGA))
+            throw new IllegalStateException("Cobrança já foi paga.");
+
+        if (cobranca.getDestinatario().equals(pagador))
+            throw new IllegalArgumentException("O pagador não pode ser o mesmo que o destinatário.");
+    }
+
 
     public BigDecimal getValorPago() {
         return valorPago;

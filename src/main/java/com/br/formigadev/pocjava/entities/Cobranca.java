@@ -6,6 +6,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_cobrancas")
@@ -31,6 +32,10 @@ public class Cobranca {
     private LocalDateTime dataAtualizacao;
     private String cpfDestinatario;
     private String cpfOrigem;
+    @OneToMany(mappedBy = "cobranca")
+    private List<Pagamento> pagamentos;
+    @Version// lock otimista para sql
+    private Long versao;
 
     @Deprecated
     public Cobranca(){}
@@ -40,6 +45,27 @@ public class Cobranca {
         this.valor = valorCobranca;
         this.descricao= descricao;
         this.cpfOrigem = cpfOrigem;
+    }
+
+    public Cobranca(BigDecimal valor, CobrancaStatus statusCobranca, TipoPagamento tipoPagamento, String cpfOrigem, String cpfDestinatario) {
+        this.valor = valor;
+        this.status = statusCobranca;
+
+    }
+
+    public List<Pagamento> getPagamentos() {
+        return pagamentos;
+    }
+
+    public LocalDateTime getDataAtualizacao() {
+        return dataAtualizacao;
+    }
+
+    public void marcarComoPaga() {
+        if (this.status != CobrancaStatus.PENDENTE) {
+            throw new IllegalStateException("Cobrança não pode ser marcada como paga a partir do estado atual");
+        }
+        this.status = CobrancaStatus.PAGA;
     }
 
 

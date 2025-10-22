@@ -1,6 +1,6 @@
 package com.br.formigadev.pocjava.usecases;
 
-import com.br.formigadev.pocjava.controller.dto.NewBillRequest;
+import com.br.formigadev.pocjava.controller.dto.NovaCobrancaRequest;
 import com.br.formigadev.pocjava.controller.dto.NovaCobrancaResponse;
 import com.br.formigadev.pocjava.entities.Cobranca;
 import com.br.formigadev.pocjava.entities.User;
@@ -22,7 +22,7 @@ public class GerarCobrancaUseCase {
     }
 
     @Transactional
-    public NovaCobrancaResponse execute(NewBillRequest request){
+    public NovaCobrancaResponse execute(NovaCobrancaRequest request){
         Cobranca cobranca = request.toEntity();
         User destinatario = userRepository.findByCpf(request.cpfDestinatario()).orElseThrow(() -> new RuntimeException("Usuario com o cpf informado não encontrado"));
         if (destinatario.getCpf().equals(request.cpfOrigem())){
