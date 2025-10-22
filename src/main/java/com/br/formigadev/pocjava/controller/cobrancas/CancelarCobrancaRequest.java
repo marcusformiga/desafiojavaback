@@ -1,4 +1,4 @@
-package com.br.formigadev.pocjava.controller;
+package com.br.formigadev.pocjava.controller.cobrancas;
 
 import com.br.formigadev.pocjava.entities.Cobranca;
 import com.br.formigadev.pocjava.entities.CobrancaStatus;

@@ -1,4 +1,4 @@
-package com.br.formigadev.pocjava.controller;
+package com.br.formigadev.pocjava.controller.usuario;
 
 
 import com.br.formigadev.pocjava.config.TokenConfig;
@@ -14,9 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * Controller responsável por endpoints de autenticação, como geração de tokens JWT.
- */
 @RestController
 @RequestMapping("api/auth")
 public class LoginController {

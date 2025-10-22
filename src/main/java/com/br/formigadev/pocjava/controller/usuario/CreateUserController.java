@@ -1,4 +1,4 @@
-package com.br.formigadev.pocjava.controller;
+package com.br.formigadev.pocjava.controller.usuario;
 
 import com.br.formigadev.pocjava.controller.dto.NovoUsuarioRequest;
 import com.br.formigadev.pocjava.controller.dto.NovoUsuarioResponse;
@@ -20,7 +20,7 @@ public class CreateUserController {
         this.createUserUseCase = createUserUseCase;
     }
 
-    @PostMapping("/auth/register")
+    @PostMapping("/auth/registrar")
     public ResponseEntity<NovoUsuarioResponse> register(@RequestBody @Valid NovoUsuarioRequest request) {
         NovoUsuarioResponse newUser = createUserUseCase.execute(request);
 

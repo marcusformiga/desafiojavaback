@@ -1,4 +1,4 @@
-package com.br.formigadev.pocjava.controller;
+package com.br.formigadev.pocjava.controller.contas;
 
 import com.br.formigadev.pocjava.client.AutorizadorClient;
 import com.br.formigadev.pocjava.client.AutorizadorResponse;

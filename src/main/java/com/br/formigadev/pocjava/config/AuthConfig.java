@@ -19,4 +19,5 @@ public class AuthConfig implements UserDetailsService{
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         return repository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("Usuario não encontrado"));
     }
+
 }

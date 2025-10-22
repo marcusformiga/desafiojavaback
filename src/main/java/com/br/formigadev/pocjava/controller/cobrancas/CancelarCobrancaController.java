@@ -1,4 +1,4 @@
-package com.br.formigadev.pocjava.controller;
+package com.br.formigadev.pocjava.controller.cobrancas;
 
 
 import org.springframework.web.bind.annotation.*;

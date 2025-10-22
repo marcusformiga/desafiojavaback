@@ -2,9 +2,12 @@ package com.br.formigadev.pocjava.usecases;
 
 import com.br.formigadev.pocjava.controller.dto.NovaCobrancaRequest;
 import com.br.formigadev.pocjava.controller.dto.NovoPagamentoRequest;
-import com.br.formigadev.pocjava.controller.dto.NovoPagamentoResponse;
 import com.br.formigadev.pocjava.controller.dto.NovoUsuarioRequest;
-import com.br.formigadev.pocjava.entities.*;
+import com.br.formigadev.pocjava.entities.Cobranca;
+import com.br.formigadev.pocjava.entities.CobrancaStatus;
+import com.br.formigadev.pocjava.entities.Pagamento;
+import com.br.formigadev.pocjava.entities.TipoPagamento;
+import com.br.formigadev.pocjava.entities.User;
 import com.br.formigadev.pocjava.repository.CobrancaRepository;
 import com.br.formigadev.pocjava.repository.ContaRepository;
 import com.br.formigadev.pocjava.repository.PagamentoRepository;
@@ -14,6 +17,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
@@ -21,7 +25,8 @@ import java.time.LocalDate;
 import java.util.Optional;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 

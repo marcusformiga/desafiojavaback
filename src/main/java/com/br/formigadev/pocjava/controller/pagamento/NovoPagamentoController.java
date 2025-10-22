@@ -1,4 +1,4 @@
-package com.br.formigadev.pocjava.controller;
+package com.br.formigadev.pocjava.controller.pagamento;
 
 
 import com.br.formigadev.pocjava.controller.dto.NovoPagamentoRequest;

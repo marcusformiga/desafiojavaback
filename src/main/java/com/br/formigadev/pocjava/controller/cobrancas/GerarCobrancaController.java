@@ -1,4 +1,4 @@
-package com.br.formigadev.pocjava.controller;
+package com.br.formigadev.pocjava.controller.cobrancas;
 
 import com.br.formigadev.pocjava.controller.dto.NovaCobrancaRequest;
 import com.br.formigadev.pocjava.controller.dto.NovaCobrancaResponse;

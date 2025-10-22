@@ -29,7 +29,7 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
                         // 🔓 Rotas públicas (sem autenticação)
-                        .requestMatchers(HttpMethod.POST,"api/auth/login", "api/auth/register").permitAll()
+                        .requestMatchers(HttpMethod.POST,"api/auth/login", "api/auth/registrar").permitAll()
                         // 🔒 Todas as outras precisam de autenticação
                         .anyRequest().authenticated()
                 )
